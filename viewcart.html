@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View Cart</title>
+	<link rel="stylesheet" type="text/css" href="viewcart2.html">
+	<style>
+		body {
+			background-image: url("Menu Background.jpg");
+			background-size: cover;
+			background-position: center;
+		}
+	</style>
+		<script>
+		function removeFromCart(index) {
+			cart.splice(index, 1);
+			showCart();
+		}
+	function showCart() {
+		var cartItems = "";
+		var total = 0;
+		for (var i = 0; i < cart.length; i++) {
+			cartItems += cart[i].name + " - ₹" + cart[i].price + " <button onclick='removeFromCart(" + i + ")'>Remove</button><br>";
+			total += parseInt(cart[i].price);
+		}
+		if (cartItems == "") {
+			cartItems = "Your cart is empty.";
+		} else {
+			cartItems += "<br>Total: ₹" + total + " <button onclick='clearCart()'>Clear Cart</button>";
+		}
+		document.getElementById("cartItems").innerHTML = cartItems;
+	}
+	
+	function clearCart() {
+		cart = [];
+		showCart();
+	}
+</script>
+</head>
+<body>
+	<h1>View Cart</h1>
+	<div id="cartItems"></div>
+	<button onclick="clearCart()">Clear Cart</button>
+	<button onclick="showCart()">Show Cart</button>
+	<a href="addtocart2.html"><button>Back to Menu</button></a>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body {
+			background-image: url("payment option background.jpg");
+			background-size: cover;
+			background-position: center;
+		}
+		.container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+		.card-form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 50px;
+			padding: 20px;
+			background-color: rgba(255, 255, 255, 0.5);
+			border-radius: 10px;
+		}
+		input[type=text], input[type=password] {
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			margin-bottom: 10px;
+			width: 100%;
+			box-sizing: border-box;
+		}
+		button {
+			padding: 10px 20px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 18px;
+			transition: background-color 0.3s ease;
+		}
+		button:hover {
+			background-color: #3E8E41;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="card-form">
+			<label for="card-number">Card Number:</label>
+			<input type="text" id="card-number" name="card-number" placeholder="Enter your card number">
+			<label for="password">Password:</label>
+			<input type="password" id="password" name="password" placeholder="Enter your password">
+			<button>Submit</button>
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body {
+			background-image: url("payment option background.jpg");
+			background-size: cover;
+			background-position: center;
+		}
+		.container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+		.card-form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 50px;
+			padding: 20px;
+			background-color: rgba(255, 255, 255, 0.5);
+			border-radius: 10px;
+		}
+		input[type=text], input[type=password] {
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			margin-bottom: 10px;
+			width: 100%;
+			box-sizing: border-box;
+		}
+		button {
+			padding: 10px 20px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 18px;
+			transition: background-color 0.3s ease;
+		}
+		button:hover {
+			background-color: #3E8E41;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="card-form">
+			<form action="CardPayment2.html">
+				<label for="card-number">Card Number:</label>
+				<input type="text" id="card-number" name="card-number" placeholder="Enter your card number">
+				<label for="password">Password:</label>
+				<input type="password" id="password" name="password" placeholder="Enter your password">
+				<button type="submit">Submit</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body {
+			background-image: url("payment option background.jpg");
+			background-size: cover;
+			background-position: center;
+		}
+		.container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+		.card-form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 50px;
+			padding: 20px;
+			background-color: rgba(255, 255, 255, 0.5);
+			border-radius: 10px;
+		}
+		input[type=text], input[type=password] {
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			margin-bottom: 10px;
+			width: 100%;
+			box-sizing: border-box;
+		}
+		button {
+			padding: 10px 20px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 18px;
+			transition: background-color 0.3s ease;
+		}
+		button:hover {
+			background-color: #3E8E41;
+		}
+        .error {
+            color: red;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="card-form">
+			<form id="payment-form">
+				<label for="card-number">Card Number:</label>
+				<input type="text" id="card-number" name="card-number" placeholder="Enter your card number">
+				<p id="card-number-error" class="error"></p>
+				<label for="pin">PIN:</label>
+				<input type="password" id="pin" name="pin" placeholder="Enter your PIN">
+				<p id="pin-error" class="error"></p>
+				<button type="submit">Submit</button>
+			</form>
+		</div>
+	</div>
+	<script>
+		const paymentForm = document.getElementById("payment-form");
+		const cardNumberInput = document.getElementById("card-number");
+		const pinInput = document.getElementById("pin");
+		const cardNumberError = document.getElementById("card-number-error");
+		const pinError = document.getElementById("pin-error");
+
+		function validateCardNumber() {
+			if (cardNumberInput.value.length !== 12 || isNaN(cardNumberInput.value)) {
+				cardNumberError.textContent = "Please enter a valid 12 digit card number.";
+				return false;
+			}
+			return true;
+		}
+
+		function validatePin() {
+			if (pinInput.value.length !== 4 || isNaN(pinInput.value)) {
+				pinError.textContent = "Please enter a valid 4 digit PIN.";
+				return false;
+			}
+			return true;
+		}
+
+		paymentForm.addEventListener("submit", (event) => {
+			event.preventDefault();
+			cardNumberError.textContent = "";
+			pinError.textContent = "";
+			if (validateCardNumber() && validatePin()) {
+				window.location.href = "CardPayment2.html";
+			}
+		});
+	</script>
+</body>
+</html>
